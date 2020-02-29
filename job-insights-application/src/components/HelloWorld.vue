@@ -12,6 +12,51 @@
 
 <template>
   <v-container bg grid-list-md text-center fluid>
+    <v-dialog
+            v-model="dialog"
+    >
+      <v-card v-if="dialog_info">
+        <v-toolbar dark>
+          <v-app-bar-nav-icon></v-app-bar-nav-icon>
+          <v-toolbar-title class="overline" style="font-size: 15px !important;">
+            {{ dialog_info.companyName }}
+          </v-toolbar-title>
+        </v-toolbar>
+
+        <v-card-title class="display-3 font-weight-light ">
+          {{ dialog_info.position }}
+        </v-card-title>
+
+        <v-card-text>
+          {{ dialog_info.position }}
+        </v-card-text>
+
+        <v-card-actions>
+          <v-spacer></v-spacer>
+
+          <v-btn
+                  color="green darken-1"
+                  text
+                  @click="dialog = false"
+          >
+            Disagree
+          </v-btn>
+
+          <v-btn
+                  color="green darken-1"
+                  text
+                  @click="dialog = false"
+          >
+            Agree
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+      <v-card v-else>
+        <v-card-text>
+          No data here
+        </v-card-text>
+      </v-card>
+    </v-dialog>
     <v-layout row wrap align-center>
       <v-flex md12>
         <v-card class="text-center">
@@ -82,8 +127,6 @@
                     </v-flex>
                     <v-flex>
                       <v-card>
-
-                      
                         <transition-group appear name="fade">
                         <div v-for="skill in message" :key="skill" class="my-5;">
                         <v-btn outlined block  color=deep-purple accent-4> 
@@ -105,9 +148,9 @@
                   <v-layout column>
                     <v-flex class="text-left">
                       <!-- list work way better for taking up the tire space-->
-                      <v-list>
-                        <v-list-item-group>
-                          <v-list-item v-for="j in jobs" :key="j.companyName">
+                      <v-list >
+                        <v-list-item-group >
+                          <v-list-item v-for="j in jobs" :key="j.companyName" @click="showDialog(j)">
                             <!-- create a logo -> just be a picture-->
                             <v-list-item-avatar size="150">
                               <v-img src="https://cdn.vuetifyjs.com/images/cards/store.jpg"></v-img>
@@ -144,6 +187,8 @@ export default {
   },
   data () {
     return {
+      dialog_info: null,
+      dialog: false,
       tab: null,
       message:[],
       uploadedImage: null,
@@ -228,19 +273,27 @@ export default {
     
   },
   methods:{
-        callFunction: function () {
+        showSkills: function () {
             var v = this;
             var i =0;
+
+
             setInterval(function () {
-               v.message.push(v.skills[i].type);
-               i=i+1;
+              if(v.skills[i].type || i < v.skills.length){
+                v.message.push(v.skills[i].type);
+                i=i+1;
+              }
+
+              return;
             }, 2000);
-            i=i+1;
-        }
-    },
-    mounted () {
-      this.callFunction()
+        },
+    showDialog: function (info_obj) {
+          this.dialog = true;
+
+          // set the info that the dialog will have
+          this.dialog_info = info_obj;
     }
+    },
  
 };
 </script>
