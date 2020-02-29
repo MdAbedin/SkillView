@@ -117,7 +117,10 @@
                                     </span>
                                   <span class="headline font-weight-light">
                                       or drop them in here
-                                    </span>
+                                    </span>   
+                                    <div id="chart">
+                    <apexchart type="radar" height="350" :options="chartOptions" :series="series"></apexchart>
+                    </div>
                                 </v-col>
                               </v-row>
                             </v-card-text>
@@ -138,6 +141,7 @@
                   
                       </v-card>
                     </v-flex>
+                    
                   </v-layout>
                 </v-card-text>
               </v-card>
@@ -153,7 +157,7 @@
                           <v-list-item v-for="j in jobs" :key="j.companyName" @click="showDialog(j)">
                             <!-- create a logo -> just be a picture-->
                             <v-list-item-avatar size="150">
-                              <v-img src="https://cdn.vuetifyjs.com/images/cards/store.jpg"></v-img>
+                              <v-img :src="j.logoURL"></v-img>
                             </v-list-item-avatar>
 
                             <v-list-item-content>
@@ -178,12 +182,14 @@
 <script>
   import ImageUpload from "../components/ImageUpload";
   import Listing from "../components/listing";
+  import VueApexCharts from 'vue-apexcharts';
 
 export default {
   name: "HelloWorld",
   components: {
+    apexchart:VueApexCharts,
     ImageUpload,
-    Listing
+    Listing,
   },
   data () {
     return {
@@ -195,7 +201,7 @@ export default {
       jobs: [
         {
           position: 'Full Stack Developer',
-          logoURL: '',
+          logoURL: 'https://res.cloudinary.com/dsnttadso/image/upload/v1582974358/JP-morgan_rx91up.png',
           numMatched: Math.floor(Math.random() * 30),
           companyName: 'JP Morgan Chase',
           location: 'New York City, NY',
@@ -206,7 +212,7 @@ export default {
         },
         {
           position: 'Junior Frontend Developer',
-          logoURL: '',
+          logoURL: 'https://res.cloudinary.com/dsnttadso/image/upload/v1582974358/uber_aw6a9v.jpg',
           numMatched: Math.floor(Math.random() * 30),
           companyName: 'Uber',
           location: 'Santa Monica, CA',
@@ -217,7 +223,7 @@ export default {
         },
         {
           position: 'Network Engineer',
-          logoURL: '',
+          logoURL: 'https://res.cloudinary.com/dsnttadso/image/upload/v1582975324/untitled_p4qikm.png',
           numMatched: Math.floor(Math.random() * 30),
           companyName: 'Apple',
           location: 'Mountain View, CA',
@@ -228,7 +234,7 @@ export default {
         },
         {
           position: 'Jr. Data Science Member',
-          logoURL: '',
+          logoURL: 'https://res.cloudinary.com/dsnttadso/image/upload/v1582975324/abbott-laboratories_416x416_sm4vpe.jpg',
           numMatched: Math.floor(Math.random() * 30),
           companyName: 'Abbott Labs',
           location: 'Irving, TX',
@@ -239,7 +245,7 @@ export default {
         },
         {
           position: 'Video Game Designer',
-          logoURL: '',
+          logoURL: 'https://res.cloudinary.com/dsnttadso/image/upload/v1582976579/blizzard-entertainment-logo-11530958317pvsb2iytsk_bsvsyl.png',
           numMatched: Math.floor(Math.random() * 30),
           companyName: 'Blizzard Entertainment',
           location: 'Brisbane, Australia',
@@ -250,7 +256,7 @@ export default {
         },
         {
           position: 'Backend Developer',
-          logoURL: '',
+          logoURL: 'https://res.cloudinary.com/dsnttadso/image/upload/v1582975623/75cca60559bdb1d019238e21dffb1eef_gk9o7r.png',
           numMatched: Math.floor(Math.random() * 30),
           companyName: 'Google',
           location: 'Santa Monica, CA',
@@ -268,7 +274,63 @@ export default {
       {type: 'Unity'},
       {type: 'MongoDB'},
       {type: 'C++'}
-    ]
+    ],
+         series: [{
+            name: 'Series 1',
+            data: [20, 100, 40, 30, 50, 80, 33],
+          }],
+          chartOptions: {
+            chart: {
+              height: 350,
+              type: 'radar',
+            },
+            dataLabels: {
+              enabled: true
+            },
+            plotOptions: {
+              radar: {
+                size: 140,
+                polygons: {
+                  strokeColor: '#e9e9e9',
+                  fill: {
+                    colors: ['#f8f8f8', '#fff']
+                  }
+                }
+              }
+            },
+            title: {
+              text: 'Radar with Polygon Fill'
+            },
+            colors: ['#FF4560'],
+            markers: {
+              size: 4,
+              colors: ['#fff'],
+              strokeColor: '#FF4560',
+              strokeWidth: 2,
+            },
+            tooltip: {
+              y: {
+                formatter: function(val) {
+                  return val
+                }
+              }
+            },
+            xaxis: {
+              categories: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+            },
+            yaxis: {
+              tickAmount: 7,
+              labels: {
+                formatter: function(val, i) {
+                  if (i % 2 === 0) {
+                    return val
+                  } else {
+                    return ''
+                  }
+                }
+              }
+            }
+          },
     }
     
   },

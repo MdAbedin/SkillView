@@ -30,6 +30,7 @@
                     tile
                     size="80"
                     color="grey"
+
             >
                 <span class="white--text"></span>
             </v-list-item-avatar>
