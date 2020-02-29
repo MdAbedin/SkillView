@@ -1,8 +1,8 @@
 <template>
   <v-container bg grid-list-md text-center fluid>
     <v-layout row wrap align-center>
-      <v-flex class="text-center" md12>
-        <v-card >
+      <v-flex md12>
+        <v-card class="text-center">
           <v-tabs
                   v-model="tab"
                   background-color="deep-purple accent-4"
@@ -81,7 +81,28 @@
             </v-tab-item>
             <v-tab-item :key="2" value="viewjobs">
               <v-card flat>
-                <v-card-text>viewjobs</v-card-text>
+                <v-card-text>
+                  <v-layout column>
+                    <v-flex class="text-left">
+                      <!-- list work way better for taking up the tire space-->
+                      <v-list>
+                        <v-list-item-group>
+                          <v-list-item v-for="j in jobs" :key="j.companyName">
+                            <!-- create a logo -> just be a picture-->
+                            <v-list-item-avatar size="150">
+                              <v-img src="https://cdn.vuetifyjs.com/images/cards/store.jpg"></v-img>
+                            </v-list-item-avatar>
+
+                            <v-list-item-content>
+                              <Listing :info="j"></Listing>
+                            </v-list-item-content>
+                          </v-list-item>
+                        </v-list-item-group>
+                      </v-list>
+
+                    </v-flex>
+                  </v-layout>
+                </v-card-text>
               </v-card>
             </v-tab-item>
           </v-tabs-items>
@@ -93,17 +114,86 @@
 
 <script>
   import ImageUpload from "../components/ImageUpload";
+  import Listing from "../components/listing";
 
 export default {
   name: "HelloWorld",
   components: {
-    ImageUpload
+    ImageUpload,
+    Listing
   },
   data () {
     return {
       tab: null,
       uploadedImage: null,
+      jobs: [
+        {
+          position: 'Full Stack Developer',
+          logoURL: '',
+          numMatched: Math.floor(Math.random() * 30),
+          companyName: 'JP Morgan Chase',
+          location: 'New York City, NY',
+          matchedSkills: ['C++', 'Python', 'ReactJS'],
+          minPay: 12 + Math.floor(Math.random() * 30),
+          maxPay: 20 + Math.floor(Math.random() * 30)
 
+        },
+        {
+          position: 'Junior Frontend Developer',
+          logoURL: '',
+          numMatched: Math.floor(Math.random() * 30),
+          companyName: 'Uber',
+          location: 'Santa Monica, CA',
+          matchedSkills: ['Vim', 'ReactJS', 'Javascript'],
+          minPay: 12 + Math.floor(Math.random() * 30),
+          maxPay: 20 + Math.floor(Math.random() * 30)
+
+        },
+        {
+          position: 'Network Engineer',
+          logoURL: '',
+          numMatched: Math.floor(Math.random() * 30),
+          companyName: 'Apple',
+          location: 'Mountain View, CA',
+          matchedSkills: ['C', 'Rust', 'NetworksC'],
+          minPay: 12 + Math.floor(Math.random() * 30),
+          maxPay: 20 + Math.floor(Math.random() * 30)
+
+        },
+        {
+          position: 'Jr. Data Science Member',
+          logoURL: '',
+          numMatched: Math.floor(Math.random() * 30),
+          companyName: 'Abbott Labs',
+          location: 'Irving, TX',
+          matchedSkills: ['Python', 'Julia', 'R'],
+          minPay: 12 + Math.floor(Math.random() * 30),
+          maxPay: 20 + Math.floor(Math.random() * 30)
+
+        },
+        {
+          position: 'Video Game Designer',
+          logoURL: '',
+          numMatched: Math.floor(Math.random() * 30),
+          companyName: 'Blizzard Entertainment',
+          location: 'Brisbane, Australia',
+          matchedSkills: ['C++', 'C#', 'Unity'],
+          minPay: 12 + Math.floor(Math.random() * 30),
+          maxPay: 20 + Math.floor(Math.random() * 30)
+
+        },
+        {
+          position: 'Backend Developer',
+          logoURL: '',
+          numMatched: Math.floor(Math.random() * 30),
+          companyName: 'Google',
+          location: 'Santa Monica, CA',
+          matchedSkills: ['C++', 'Python', 'Rustlang'],
+          minPay: 12 + Math.floor(Math.random() * 30),
+          maxPay: 20 + Math.floor(Math.random() * 30)
+
+        },
+      ]
     }
   }
 };
