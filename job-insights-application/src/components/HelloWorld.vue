@@ -16,7 +16,7 @@
             v-model="dialog"
     >
       <v-card v-if="dialog_info">
-        <v-toolbar dark>
+        <v-toolbar dark color="deep-purple">
           <v-app-bar-nav-icon></v-app-bar-nav-icon>
           <v-toolbar-title class="overline" style="font-size: 15px !important;">
             {{ dialog_info.companyName }}
@@ -27,29 +27,14 @@
           {{ dialog_info.position }}
         </v-card-title>
 
+        <v-card-subtitle>
+
+        </v-card-subtitle>
+
         <v-card-text>
           {{ dialog_info.position }}
         </v-card-text>
 
-        <v-card-actions>
-          <v-spacer></v-spacer>
-
-          <v-btn
-                  color="green darken-1"
-                  text
-                  @click="dialog = false"
-          >
-            Disagree
-          </v-btn>
-
-          <v-btn
-                  color="green darken-1"
-                  text
-                  @click="dialog = false"
-          >
-            Agree
-          </v-btn>
-        </v-card-actions>
       </v-card>
       <v-card v-else>
         <v-card-text>

@@ -7,8 +7,8 @@
           <v-icon dark>home</v-icon>
         </v-avatar>
 
-        <span class="ml-4 headline font-weight-light">
-          SkillView
+        <span class="ml-4 headline text-uppercase font-weight-light">
+          <span class="font-weight-bold">S</span>kill<span class="font-weight-bold">V</span>iew
         </span>
       </div>
 
