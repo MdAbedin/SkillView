@@ -30,6 +30,9 @@
         <v-card-text>
           {{ dialog_info.position }}
         </v-card-text>
+         <div id="chart">
+          <apexchart type="radar" height="350" :options="chartOptions" :series="series"></apexchart>
+          </div>
 
         <v-card-actions>
           <v-spacer></v-spacer>
@@ -118,9 +121,7 @@
                                   <span class="headline font-weight-light">
                                       or drop them in here
                                     </span>   
-                                    <div id="chart">
-                    <apexchart type="radar" height="350" :options="chartOptions" :series="series"></apexchart>
-                    </div>
+                                 
                                 </v-col>
                               </v-row>
                             </v-card-text>
@@ -275,9 +276,9 @@ export default {
       {type: 'MongoDB'},
       {type: 'C++'}
     ],
-         series: [{
+    series: [{
             name: 'Series 1',
-            data: [20, 100, 40, 30, 50, 80, 33],
+            data: [60]
           }],
           chartOptions: {
             chart: {
@@ -316,7 +317,7 @@ export default {
               }
             },
             xaxis: {
-              categories: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+              categories: ['Javascript', 'HTML', 'React Native', 'Vue.JS', 'MongoDB', 'C++', 'Unity']
             },
             yaxis: {
               tickAmount: 7,
@@ -349,13 +350,14 @@ export default {
         },
     showDialog: function (info_obj) {
           this.dialog = true;
+          this.series[0].data=[];
 
           // set the info that the dialog will have
           this.dialog_info = info_obj;
-
-            
-              }
-               
+          for(let i =0; i<8;i++){
+            this.series[0].data.push(Math.floor(Math.random() * (10 - 1 + 1)) + 1);
+          }
+              },
                 
                       
     }
