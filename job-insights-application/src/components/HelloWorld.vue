@@ -1,3 +1,15 @@
+<style>
+.fade-enter-active, .fade-leave-active {
+  transition: all 2.9s ease;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+.skills {
+  transition: transform 5s;
+}
+</style>
+
 <template>
   <v-container bg grid-list-md text-center fluid>
     <v-layout row wrap align-center>
@@ -70,9 +82,17 @@
                     </v-flex>
                     <v-flex>
                       <v-card>
-                        <v-card-text>
-                          This should be on the right
-                        </v-card-text>
+
+                      
+                        <transition-group appear name="fade">
+                        <div v-for="skill in message" :key="skill" class="my-5;">
+                        <v-btn outlined block  color=deep-purple accent-4> 
+                        {{skill}}
+                         </v-btn>
+
+                        </div>
+                        </transition-group>
+                  
                       </v-card>
                     </v-flex>
                   </v-layout>
@@ -125,6 +145,7 @@ export default {
   data () {
     return {
       tab: null,
+      message:[],
       uploadedImage: null,
       jobs: [
         {
@@ -191,10 +212,35 @@ export default {
           matchedSkills: ['C++', 'Python', 'Rustlang'],
           minPay: 12 + Math.floor(Math.random() * 30),
           maxPay: 20 + Math.floor(Math.random() * 30)
-
         },
-      ]
+
+
+      ],
+      skills: [
+      {type: 'Javascript'},
+      {type: 'HTML'},
+      {type: 'Vue.JS'},
+      {type: 'Unity'},
+      {type: 'MongoDB'},
+      {type: 'C++'}
+    ]
     }
-  }
+    
+  },
+  methods:{
+        callFunction: function () {
+            var v = this;
+            var i =0;
+            setInterval(function () {
+               v.message.push(v.skills[i].type);
+               i=i+1;
+            }, 2000);
+            i=i+1;
+        }
+    },
+    mounted () {
+      this.callFunction()
+    }
+ 
 };
 </script>
