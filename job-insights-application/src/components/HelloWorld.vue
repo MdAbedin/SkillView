@@ -180,31 +180,27 @@
                           </v-card>
                         </div>
                       </ImageUpload>
-                      <v-btn @click="showSkills()" block  color=deep-purple accent-4> 
-                      Click to Analyze Resume
-</v-btn>
+
                     </v-flex>
 
                     <v-flex v-else>
-                      <ImageUpload v-model="uploadedImage">
+                      <ImageUpload v-model="uploadedImage" @input="showSkills()">
                         <div slot="activator">
                           <v-card flat outlined>
                             <v-card-text>
                               <v-row align="center" justify="center">
-                                <v-col cols="2">
-                                  <v-img src="https://res.cloudinary.com/cheezitromansh/image/upload/v1582959082/icons/cloud-computing_1_zt0k9x.png"
-                                         lazy-src="https://res.cloudinary.com/cheezitromansh/image/upload/v1582959082/icons/cloud-computing_1_zt0k9x.png"
-                                         width="100px">
-
-                                  </v-img>
-                                </v-col>
                                 <v-col>
-                                    <span class="headline font-weight-medium">
+                                  <v-btn class="mx-2" fab dark small color="deep-purple">
+                                    <v-icon dark>cloud_upload</v-icon>
+                                  </v-btn>
+
+                                  <span class="headline font-weight-medium" style="color: #7E57C2">
                                       Add Files
-                                    </span>
+                                  </span>
+
                                   <span class="headline font-weight-light">
                                       or drop them in here
-                                    </span>   
+                                  </span>
                                  
                                 </v-col>
                               </v-row>
@@ -216,10 +212,11 @@
                     <v-flex>
                       <v-card>
                         <transition-group appear name="fade">
-                        <div v-for="skill in message" :key="skill" class="my-5;">
-                        <v-btn outlined block  color=deep-purple accent-4> 
-                        {{skill}}
-                         </v-btn>
+                        <div v-for="skill in message" :key="skill" class="pa-2">
+
+                          <v-btn outlined block  color=deep-purple accent-4>
+                            {{skill}}
+                          </v-btn>
 
                         </div>
                         </transition-group>

@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar app>
+    <v-app-bar app color="#fff">
       <div class="d-flex align-center">
         <!-- keep this inplace of the logo-->
         <v-avatar color="indigo">
