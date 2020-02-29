@@ -32,7 +32,7 @@
                     color="grey"
 
             >
-                <span class="white--text"></span>
+                <span class="white--text"> {{info.numMatched}}</span>
             </v-list-item-avatar>
         </v-list-item>
     </v-card>
