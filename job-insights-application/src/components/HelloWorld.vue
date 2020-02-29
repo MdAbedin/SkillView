@@ -110,7 +110,7 @@
                           <v-list-item v-for="j in jobs" :key="j.companyName">
                             <!-- create a logo -> just be a picture-->
                             <v-list-item-avatar size="150">
-                              <v-img src="https://cdn.vuetifyjs.com/images/cards/store.jpg"></v-img>
+                              <v-img :src="j.logoURL"></v-img>
                             </v-list-item-avatar>
 
                             <v-list-item-content>
@@ -150,7 +150,7 @@ export default {
       jobs: [
         {
           position: 'Full Stack Developer',
-          logoURL: '',
+          logoURL: 'https://res.cloudinary.com/dsnttadso/image/upload/v1582974358/JP-morgan_rx91up.png',
           numMatched: Math.floor(Math.random() * 30),
           companyName: 'JP Morgan Chase',
           location: 'New York City, NY',
@@ -161,7 +161,7 @@ export default {
         },
         {
           position: 'Junior Frontend Developer',
-          logoURL: '',
+          logoURL: 'https://res.cloudinary.com/dsnttadso/image/upload/v1582974358/uber_aw6a9v.jpg',
           numMatched: Math.floor(Math.random() * 30),
           companyName: 'Uber',
           location: 'Santa Monica, CA',
@@ -172,7 +172,7 @@ export default {
         },
         {
           position: 'Network Engineer',
-          logoURL: '',
+          logoURL: 'https://res.cloudinary.com/dsnttadso/image/upload/v1582975324/untitled_p4qikm.png',
           numMatched: Math.floor(Math.random() * 30),
           companyName: 'Apple',
           location: 'Mountain View, CA',
@@ -183,7 +183,7 @@ export default {
         },
         {
           position: 'Jr. Data Science Member',
-          logoURL: '',
+          logoURL: 'https://res.cloudinary.com/dsnttadso/image/upload/v1582975324/abbott-laboratories_416x416_sm4vpe.jpg',
           numMatched: Math.floor(Math.random() * 30),
           companyName: 'Abbott Labs',
           location: 'Irving, TX',
@@ -194,7 +194,7 @@ export default {
         },
         {
           position: 'Video Game Designer',
-          logoURL: '',
+          logoURL: 'https://res.cloudinary.com/dsnttadso/image/upload/v1582976579/blizzard-entertainment-logo-11530958317pvsb2iytsk_bsvsyl.png',
           numMatched: Math.floor(Math.random() * 30),
           companyName: 'Blizzard Entertainment',
           location: 'Brisbane, Australia',
@@ -205,7 +205,7 @@ export default {
         },
         {
           position: 'Backend Developer',
-          logoURL: '',
+          logoURL: 'https://res.cloudinary.com/dsnttadso/image/upload/v1582975623/75cca60559bdb1d019238e21dffb1eef_gk9o7r.png',
           numMatched: Math.floor(Math.random() * 30),
           companyName: 'Google',
           location: 'Santa Monica, CA',
