@@ -27,12 +27,12 @@
             </v-list-item-content>
 
             <v-list-item-avatar
-                    tile
+
                     size="80"
-                    color="grey"
+                    color="green"
 
             >
-                <span class="white--text"> {{info.numMatched}}</span>
+                <span class="display-1 white--text"> {{info.numMatched}}</span>
             </v-list-item-avatar>
         </v-list-item>
     </v-card>
