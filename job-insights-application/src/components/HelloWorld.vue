@@ -82,16 +82,17 @@
                     </v-flex>
                     <v-flex>
                       <v-card>
+
+                      
                         <transition-group appear name="fade">
-                        <div v-for="skill in message" :key="skill">
+                        <div v-for="skill in message" :key="skill" class="my-5;">
+                        <v-btn outlined block  color=deep-purple accent-4> 
                         {{skill}}
+                         </v-btn>
 
                         </div>
                         </transition-group>
-                        
-                        <v-card-text>
-                          This should be on the right
-                        </v-card-text>
+                  
                       </v-card>
                     </v-flex>
                   </v-layout>
@@ -142,7 +143,7 @@ export default {
             setInterval(function () {
                v.message.push(v.skills[i].type);
                i=i+1;
-            }, 3000);
+            }, 2000);
             i=i+1;
         }
     },
