@@ -99,6 +99,9 @@
                           </v-card>
                         </div>
                       </ImageUpload>
+                      <v-btn @click="showSkills()" block  color=deep-purple accent-4> 
+                      Click to Analyze Resume
+</v-btn>
                     </v-flex>
 
                     <v-flex v-else>
@@ -300,7 +303,7 @@ export default {
               }
             },
             title: {
-              text: 'Radar with Polygon Fill'
+              text: ''
             },
             colors: ['#FF4560'],
             markers: {
