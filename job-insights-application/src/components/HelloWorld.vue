@@ -31,35 +31,43 @@
                 <v-card-text>
                   <!--put the image Upload logic here-->
                   <v-layout row>
-                    <v-flex>
-                      <ImageUpload>
+                    <v-flex v-if="uploadedImage">
+                      <ImageUpload v-model="uploadedImage">
                         <div slot="activator">
-                            <v-card flat outlined>
-                              <v-card-text>
-                                <v-row align="center" justify="center">
-                                  <v-col cols="2">
-                                    <v-img src="https://res.cloudinary.com/cheezitromansh/image/upload/v1582959082/icons/cloud-computing_1_zt0k9x.png"
-                                           lazy-src="https://res.cloudinary.com/cheezitromansh/image/upload/v1582959082/icons/cloud-computing_1_zt0k9x.png"
-                                           width="128"
-                                    >
-
-                                    </v-img>
-                                  </v-col>
-                                  <v-col>
-                                    <span class="headline font-weight-medium">
-                                      Add Files
-                                    </span>
-                                    <span class="headline font-weight-light">
-                                      or drop them in here
-                                    </span>
-                                  </v-col>
-                                </v-row>
-                              </v-card-text>
-                            </v-card>
+                          <v-card class="elevation-10">
+                            <v-img :src="uploadedImage.imageURL" aspect-ratio="1"></v-img>
+                          </v-card>
                         </div>
                       </ImageUpload>
                     </v-flex>
 
+                    <v-flex v-else>
+                      <ImageUpload v-model="uploadedImage">
+                        <div slot="activator">
+                          <v-card flat outlined>
+                            <v-card-text>
+                              <v-row align="center" justify="center">
+                                <v-col cols="2">
+                                  <v-img src="https://res.cloudinary.com/cheezitromansh/image/upload/v1582959082/icons/cloud-computing_1_zt0k9x.png"
+                                         lazy-src="https://res.cloudinary.com/cheezitromansh/image/upload/v1582959082/icons/cloud-computing_1_zt0k9x.png"
+                                         width="100px">
+
+                                  </v-img>
+                                </v-col>
+                                <v-col>
+                                    <span class="headline font-weight-medium">
+                                      Add Files
+                                    </span>
+                                  <span class="headline font-weight-light">
+                                      or drop them in here
+                                    </span>
+                                </v-col>
+                              </v-row>
+                            </v-card-text>
+                          </v-card>
+                        </div>
+                      </ImageUpload>
+                    </v-flex>
                     <v-flex>
                       <v-card>
                         <v-card-text>
@@ -94,6 +102,7 @@ export default {
   data () {
     return {
       tab: null,
+      uploadedImage: null,
 
     }
   }

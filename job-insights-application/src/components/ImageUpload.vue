@@ -1,6 +1,5 @@
 <template>
     <div>
-        <!--oh god i hope this works-->
         <!--a slot for the parent component to activate the file changer-->
         <div @click="launchFilePicker()">
             <slot name="activator"></slot>
@@ -45,6 +44,7 @@
                 //check is there is an actual file
                 if (file.length > 0) {
                     let size = imageFile.size / maxSize / maxSize;
+                    console.log(imageFile);
                     if (!imageFile.type.match('image.*')) {
                         // check whether the upload is an image
                         this.errorDialog = true;
