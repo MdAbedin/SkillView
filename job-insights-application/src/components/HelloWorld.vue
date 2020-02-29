@@ -231,12 +231,19 @@ export default {
         callFunction: function () {
             var v = this;
             var i =0;
-            setInterval(function () {
-               v.message.push(v.skills[i].type);
+            var loop=setInterval(function () {
+              v.message.push(v.skills[i].type);
                i=i+1;
-            }, 2000);
-            i=i+1;
-        }
+              if (v.skills.length === i)
+              {
+                clearInterval(loop);
+              }
+              }, 2000); 
+            
+              }
+               
+                
+                      
     },
     mounted () {
       this.callFunction()
