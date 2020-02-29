@@ -274,26 +274,31 @@ export default {
   },
   methods:{
         showSkills: function () {
-            var v = this;
-            var i =0;
-
-
-            setInterval(function () {
-              if(v.skills[i].type || i < v.skills.length){
-                v.message.push(v.skills[i].type);
-                i=i+1;
-              }
-
-              return;
-            }, 2000);
+          let v = this;
+          let i = 0;
+          var loop=setInterval(function () {
+            v.message.push(v.skills[i].type);
+            i=i+1;
+            if (v.skills.length === i)
+            {
+              clearInterval(loop);
+            }
+          }, 2000);
         },
     showDialog: function (info_obj) {
           this.dialog = true;
 
           // set the info that the dialog will have
           this.dialog_info = info_obj;
+
+            
+              }
+               
+                
+                      
     }
-    },
+
+
  
 };
 </script>
