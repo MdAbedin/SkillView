@@ -29,7 +29,7 @@
             <v-list-item-avatar
 
                     size="80"
-                    color="green"
+                    color="deep-purple"
 
             >
                 <span class="display-1 white--text"> {{info.numMatched}}</span>
